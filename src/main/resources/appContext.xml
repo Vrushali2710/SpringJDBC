@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean class="autowireconst.beans.Address" id = "address">
+        <constructor-arg value="100"/>
+        <constructor-arg value="Bangalore"/>
+        <constructor-arg value="123456"/>
+    </bean>
+    <bean class="autowireconst.beans.Address" id = "address" autowire-candidate="false">
+        <constructor-arg value="200"/>
+        <constructor-arg value="delhi"/>
+        <constructor-arg value="123457"/>
+    </bean>
+<!--    In Spring XML configuration, the index attribute is used within the <constructor-arg> tag to explicitly map a value to a specific position in a Java constructor.-->
+
+<!--    When you have multiple parameters in a constructor, Spring tries to guess which <constructor-arg> goes where based on the order and type. The index attribute removes that guesswork.-->
+    <bean class="autowireconst.beans.Student" id = "stdId2" autowire="constructor" >
+        <constructor-arg value="10" index="0"/>
+        <constructor-arg value="Kerry" index="1"/>
+    </bean>
+
+</beans>

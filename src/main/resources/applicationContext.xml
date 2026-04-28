@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean class="autowire.beans.Address" id = "address">
+        <property name="houseNo" value="100"/>
+        <property name="city" value="Bangalore"/>
+        <property name="pincode" value="123456"/>
+    </bean>
+<!--    In case of multiple objects of same type and mode is byType we have to use autowire-candidate if it set as false it will not participate in autowiring-->
+    <bean class="autowire.beans.Address" id = "address2" autowire-candidate="false">
+        <property name="houseNo" value="101"/>
+        <property name="city" value="Delhi"/>
+        <property name="pincode" value="123457"/>
+    </bean>
+
+<!---there are different types of modes for autowire here we have used byName for autoWire so address bean name should be same as object name-->
+<!--    <bean class="autowire.beans.Student" id = "stdId" autowire="byName" >-->
+    <!---there are different types of modes for autowire here we have used byName for autoWire so address bean name should be same as object name-->
+    <bean class="autowire.beans.Student" id = "stdId" autowire="byType" >
+<!--        byType and byName modes uses setter method for dependency injection-->
+
+        <property name="rollNo" value="10"/>
+        <property name="name" value="Kerry"/>
+
+    </bean>
+
+</beans>
